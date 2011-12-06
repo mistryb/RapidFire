@@ -1,0 +1,73 @@
+2011/12/06 16:20:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rapidfire.request' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `request`.
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 16:23:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "request".' in C:\LOCALHOST\wamp\www\yii\framework\web\CController.php:477
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(262): CController->missingAction('request')
+#1 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(277): CController->run('request')
+#2 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('site/request')
+#3 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/rapidfire/index.php?r=site/request
+2011/12/06 16:23:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "request".' in C:\LOCALHOST\wamp\www\yii\framework\web\CController.php:477
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(262): CController->missingAction('request')
+#1 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(277): CController->run('request')
+#2 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('site/request')
+#3 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#4 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#5 {main} REQUEST_URI=/rapidfire/index.php?r=site/request
+2011/12/06 18:15:11 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:15:46 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:16:10 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:17:04 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:17:30 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:24:49 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:25:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\LOCALHOST\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:158
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#3 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(283): CFilterChain->run()
+#6 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(277): CController->run('admin')
+#8 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('request/admin')
+#9 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#10 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/rapidfire/index.php?r=request/admin
+2011/12/06 18:25:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\LOCALHOST\wamp\www\yii\framework\web\auth\CAccessControlFilter.php:158
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#3 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\LOCALHOST\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(283): CFilterChain->run()
+#6 C:\LOCALHOST\wamp\www\yii\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(277): CController->run('delete')
+#8 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('request/delete')
+#9 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#10 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#11 {main} REQUEST_URI=/rapidfire/index.php?r=request/delete&id=3
+2011/12/06 18:25:46 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (95)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:25:51 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (95)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/06 18:26:06 [warning] [application] Failed to set unsafe attribute "date_responded" of "Request".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (95)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
