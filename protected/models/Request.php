@@ -61,6 +61,11 @@ class Request extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'assignedTo' => array(self::BELONGS_TO, 'User', 'assigned_to'),
+                        'comments' => array(self::HAS_MANY, 'Comment', 'request_id',
+                            'condition'=>'comments.status='.Comment::STATUS_APPROVED,
+                            'order'=>'comments.create_time DESC'),
+                        'commentCount' => array(self::STAT, 'Comment', 'request_id',
+                            'condition'=>'status='.Comment::STATUS_APPROVED),
 		);
 	}
 
@@ -103,4 +108,13 @@ class Request extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        public function addComment($comment)
+        {
+            if(Yii::app()->params['commentNeedApproval'])
+                $comment->status=Comment::STATUS_PENDING;
+            else
+                $comment->status=Comment::STATUS_APPROVED;
+            $comment->request_id=$this->id;
+            return $comment->save();
+        }
 }

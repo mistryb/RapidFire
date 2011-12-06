@@ -1,6 +1,6 @@
 <?php
 
-class RequestController extends Controller
+class CommentController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -50,34 +50,10 @@ class RequestController extends Controller
 	 */
 	public function actionView($id)
 	{
-                $request= $this->loadModel($id);
-                $comment=$this->newComment($request);
 		$this->render('view',array(
-			'model'=>$request,
-                        'comment'=>$comment
+			'model'=>$this->loadModel($id),
 		));
 	}
-        
-        protected function newComment($request)
-        {
-            $comment=new Comment;
-             if(isset($_POST['ajax']) && $_POST['ajax']==='comment-form')
-            {
-                echo CActiveForm::validate($comment);
-                Yii::app()->end();
-            }
-            if(isset($_POST['Comment']))
-            {
-                $comment->attributes=$_POST['Comment'];
-                if($request->addComment($comment))
-                {
-                    if($comment->status==Comment::STATUS_PENDING)
-                        Yii::app()->user->setFlash('commentSubmitted','Thank you...');
-                    $this->refresh();
-                }
-            }
-            return $comment;
-        }   
 
 	/**
 	 * Creates a new model.
@@ -85,14 +61,14 @@ class RequestController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Request;
+		$model=new Comment;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Request']))
+		if(isset($_POST['Comment']))
 		{
-			$model->attributes=$_POST['Request'];
+			$model->attributes=$_POST['Comment'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -114,9 +90,9 @@ class RequestController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Request']))
+		if(isset($_POST['Comment']))
 		{
-			$model->attributes=$_POST['Request'];
+			$model->attributes=$_POST['Comment'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -151,7 +127,12 @@ class RequestController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Request');
+		$dataProvider=new CActiveDataProvider('Comment', array(
+                    'criteria'=>array(
+                        'with'=>'request',
+                        'order'=>'t.status, t.create_time DESC',
+                    ),
+                ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -162,15 +143,28 @@ class RequestController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Request('search');
+		$model=new Comment('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Request']))
-			$model->attributes=$_GET['Request'];
+		if(isset($_GET['Comment']))
+			$model->attributes=$_GET['Comment'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
+        
+        
+        public function actionApprove()
+        {
+            if(Yii::app()->request->isPostRequest)
+            {
+                $comment=$this->loadModel();
+                $comment->approve();
+                $this->redirect(array('index'));
+            }
+            else
+                throw new CHttpException(400,'Invalid request...');
+        }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -179,7 +173,7 @@ class RequestController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Request::model()->findByPk($id);
+		$model=Comment::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -191,7 +185,7 @@ class RequestController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='request-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='comment-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
