@@ -66,7 +66,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'date_responded'); ?>
-            <?php 
+           <?php 
                     Yii::import('application.extensions.CJuiDatePicker.CJuiDatePicker');
                     $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                         'model'=>$model,   // model object

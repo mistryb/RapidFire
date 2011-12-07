@@ -45,7 +45,7 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('author, content', 'required'),
+			array('content', 'required'),
 		);
 	}
 
@@ -104,7 +104,10 @@ class Comment extends CActiveRecord
             if(parent::beforeSave())
             {
                 if($this->isNewRecord)
-                    $this->create_time=time();
+                {
+                    $this->create_time=new CDbExpression('NOW()');
+                    $this->author = Yii::app()->user->id;
+                }
                 return true;
             }
             else

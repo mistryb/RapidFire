@@ -21,7 +21,11 @@ $this->menu=array(
 		'id',
 		'raised_by',
 		'request_type',
-		'assigned_to',
+		array(
+                    'label'=>'Assigned To',
+                    'type'=>'raw',
+                    'value'=> CHtml::encode($model->assignedTo->username),
+                ),
 		'query',
 		'date_raised',
 		'date_responded',
@@ -31,7 +35,7 @@ $this->menu=array(
 <div id="comments">
     <?php if($model->commentCount>=1): ?>
         <h3>
-            <?php echo $model->commentCount . 'comment(s)'; ?>
+            <?php echo $model->commentCount . ' comment(s)'; ?>
         </h3>
  
         <?php $this->renderPartial('_comments',array(
