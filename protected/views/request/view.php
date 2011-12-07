@@ -27,8 +27,11 @@ $this->menu=array(
                     'value'=> CHtml::encode($model->assignedTo->username),
                 ),
 		'query',
-		'date_raised',
-		'date_responded',
+                array(
+                    'label'=>'Date Raised',
+                    'type'=>'raw',
+                    'value'=> Yii::app()->dateFormatter->formatDateTime(CHtml::encode($model->date_raised), 'medium', false)
+                ),
 	),
 )); ?>
 

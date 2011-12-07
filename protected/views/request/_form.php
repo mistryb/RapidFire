@@ -64,31 +64,6 @@
 		<?php echo $form->error($model,'date_raised'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'date_responded'); ?>
-           <?php 
-                    Yii::import('application.extensions.CJuiDatePicker.CJuiDatePicker');
-                    $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                        'model'=>$model,   // model object
-                        'attribute'=>'date_responded',
-                        'value'=>$model->date_responded,
-                        'options'=>array('autoSize'=>true,
-                            'dateFormat'=>'yy-mm-dd',
-                            'defaultDate'=>$model->date_responded,
-                            'buttomImageOnly'=>true,
-                            'buttonText'=>'Select',
-                            'showAnim'=>'fold',
-                            'showOn'=>'button',
-                            'showButtonPanel'=>true,
-                            'yearRange'=>'1900',
-                        ),
-                    'language'=>'en-AU',
-                    )
-                    );
-                ?>
-		<?php echo $form->error($model,'date_responded'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

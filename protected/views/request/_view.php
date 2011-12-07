@@ -21,12 +21,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date_raised')); ?>:</b>
-	<?php echo CHtml::encode($data->date_raised); ?>
+	<?php echo Yii::app()->dateFormatter->formatDateTime(CHtml::encode($data->date_raised), 'medium', false); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date_responded')); ?>:</b>
-	<?php echo CHtml::encode($data->date_responded); ?>
-	<br />
-
 
 </div>

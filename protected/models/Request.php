@@ -10,7 +10,6 @@
  * @property integer $assigned_to
  * @property string $query
  * @property string $date_raised
- * @property string $date_responded
  *
  * The followings are the available model relations:
  * @property User $assignedTo
@@ -48,7 +47,7 @@ class Request extends CActiveRecord
 			array('raised_by, request_type', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, raised_by, request_type, assigned_to, query, date_raised, date_responded', 'safe', 'on'=>'search'),
+			array('id, raised_by, request_type, assigned_to, query, date_raised', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,7 +80,6 @@ class Request extends CActiveRecord
 			'assigned_to' => 'Assigned To',
 			'query' => 'Query',
 			'date_raised' => 'Date Raised',
-			'date_responded' => 'Date Responded',
 		);
 	}
 
@@ -102,7 +100,6 @@ class Request extends CActiveRecord
 		$criteria->compare('assigned_to',$this->assigned_to);
 		$criteria->compare('query',$this->query,true);
 		$criteria->compare('date_raised',$this->date_raised,true);
-		$criteria->compare('date_responded',$this->date_responded,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
