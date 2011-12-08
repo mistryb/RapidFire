@@ -132,7 +132,36 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 5px solid #555;
+        font-family: sans-serif;
+        background: #C9E0ED;
+        border-radius: 10px;
+}
+div.requestid
+{
+        font-size: 20px;      
+        margin: auto;
+        display: inline-block;
+}
+div.raisedby
+{
+        display: inline-block;
+        border: 1px solid #C9E0ED;
+        margin-left: 50px;
+        font-size: 20px;      
+}
+div.dateraised
+{
+        display: inline-block;              
+        font-size: 20px;
+        float: right;
+}
+div.querycontent
+{               
+        border:3px solid #555;
+        border-radius: 10px;
+        background: #EFEFEF;
+        padding: 10px;
 }
 
 div.breadcrumbs

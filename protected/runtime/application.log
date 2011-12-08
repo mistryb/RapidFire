@@ -934,3 +934,7 @@ in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
 in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
 in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
 in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/07 20:03:31 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (71)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
