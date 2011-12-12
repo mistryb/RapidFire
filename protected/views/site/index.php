@@ -1,5 +1,18 @@
 <?php $this->pageTitle=Yii::app()->name; ?>
 
+<?php 
+    if(Yii::app()->user->isGuest)
+    {
+        ?>
+<div class="loginform">
+        <?php $this->widget('UserLogin',array('visible'=>Yii::app()->user->isGuest)); ?>
+</div>
+<?php
+    }
+    else
+    {
+    ?>
+    
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>
@@ -9,8 +22,5 @@
 	<li>View file: <tt><?php echo __FILE__; ?></tt></li>
 	<li>Layout file: <tt><?php echo $this->getLayoutFile('main'); ?></tt></li>
 </ul>
+<?php } ?>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
