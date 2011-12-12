@@ -65,6 +65,9 @@ class Request extends CActiveRecord
                             'order'=>'comments.create_time DESC'),
                         'commentCount' => array(self::STAT, 'Comment', 'request_id',
                             'condition'=>'status='.Comment::STATUS_APPROVED),
+                        'response' => array(self::HAS_ONE, 'Response', 'request_id',
+                            'condition'=>'response.status='.Response::STATUS_APPROVED,
+                            'order'=>'response.date_created DESC'),
 		);
 	}
 
@@ -113,5 +116,14 @@ class Request extends CActiveRecord
                 $comment->status=Comment::STATUS_APPROVED;
             $comment->request_id=$this->id;
             return $comment->save();
+        }
+        public function addResponse($response)
+        {
+            if(Yii::app()->params['responseNeedApproval'])
+                $response->status=Response::STATUS_PENDING;
+            else
+                $response->status=Response::STATUS_APPROVED;
+            $response->request_id=$this->id;
+            return $response->save();
         }
 }

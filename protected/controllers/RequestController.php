@@ -6,7 +6,7 @@ class RequestController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
 
 	/**
 	 * @return array action filters
@@ -52,11 +52,33 @@ class RequestController extends Controller
 	{
                 $request= $this->loadModel($id);
                 $comment=$this->newComment($request);
+                $response=$this->newResponse($request);
 		$this->render('view',array(
 			'model'=>$request,
-                        'comment'=>$comment
+                        'comment'=>$comment,
+                        'response'=>$response
 		));
 	}
+        protected function newResponse($request)
+        {
+            $response=new Response;
+             if(isset($_POST['ajax']) && $_POST['ajax']==='response-form')
+            {
+                echo CActiveForm::validate($response);
+                Yii::app()->end();
+            }
+            if(isset($_POST['Response']))
+            {
+                $response->attributes=$_POST['Response'];
+                if($request->addResponse($response))
+                {
+                    if($response->status==Comment::STATUS_PENDING)
+                        Yii::app()->user->setFlash('commentSubmitted','Thank you...');
+                    $this->refresh();
+                }
+            }
+            return $response;
+        }   
         
         protected function newComment($request)
         {

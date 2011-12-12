@@ -35,6 +35,30 @@ $this->menu=array(
 	),
 )); ?>
 
+<div id="response">    
+        <?php if ($model->response): ?>
+    <h3> Response </h3>
+    
+        <?php $this->renderPartial('_response',array(
+            'post'=>$model,
+            'response'=>$model->response,
+        )); ?>
+    <?php else: ?>
+    
+    <h3>Create Your Response</h3>
+ 
+    <?php if(Yii::app()->user->hasFlash('responseSubmitted')): ?>
+        <div class="flash-success">
+            <?php echo Yii::app()->user->getFlash('responseSubmitted'); ?>
+        </div>
+    <?php else: ?>
+        <?php $this->renderPartial('/response/_form',array(
+            'model'=>$response,
+        )); ?>
+    <?php endif; ?>
+    <?php endif; ?>
+</div>
+
 <div id="comments">
     <?php if($model->commentCount>=1): ?>
         <h3>

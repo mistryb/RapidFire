@@ -7,12 +7,16 @@
  * @property integer $id
  * @property string $content
  * @property integer $request_id
+ * @property string $date_created
+ * @property integer $status
  *
  * The followings are the available model relations:
  * @property Request $request
  */
 class Response extends CActiveRecord
 {
+        const STATUS_PENDING=1;
+        const STATUS_APPROVED=2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Response the static model class
@@ -38,11 +42,7 @@ class Response extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('content, request_id', 'required'),
-			array('request_id', 'numerical', 'integerOnly'=>true),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, content, request_id', 'safe', 'on'=>'search'),
+			array('content', 'required'),			
 		);
 	}
 
@@ -55,6 +55,7 @@ class Response extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'request' => array(self::BELONGS_TO, 'Request', 'request_id'),
+                        'author0' => array(self::BELONGS_TO, 'User', 'author'),
 		);
 	}
 
@@ -67,6 +68,8 @@ class Response extends CActiveRecord
 			'id' => 'ID',
 			'content' => 'Content',
 			'request_id' => 'Request',
+                        'date_created' => 'Date Responded',
+                        'status' => 'Status',
 		);
 	}
 
@@ -89,4 +92,18 @@ class Response extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        protected function beforeSave()
+        {
+            if(parent::beforeSave())
+            {
+                if($this->isNewRecord)
+                {
+                    $this->date_created=new CDbExpression('NOW()');
+                    $this->author = Yii::app()->user->id;
+                }
+                return true;
+            }
+            else
+                return false;
+        }
 }
