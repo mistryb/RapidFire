@@ -1,33 +1,37 @@
-<div class="form">
+<div class="form" style="width:600px; margin:auto;">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'response-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
+        
+    <div class="row">
+     <?php $this->widget('application.extensions.cleditor.ECLEditor', array(
+        'model'=>$model,
+        'attribute'=>'content', //Model attribute name. Nome do atributo do modelo.
+        'options'=>array(
+            'width'=>'600',
+            'height'=>250,
+            'useCSS'=>true,
+        ),
+        'value'=>$model->content,))?>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-	</div>
-
-	<div class="row">
+	<div class="row" style="display:none;">
 		<?php echo $form->labelEx($model,'request_id'); ?>
 		<?php echo $form->textField($model,'request_id'); ?>
 		<?php echo $form->error($model,'request_id'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" style="display:none;">
 		<?php echo $form->labelEx($model,'author'); ?>
 		<?php echo $form->textField($model,'author'); ?>
 		<?php echo $form->error($model,'author'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" style="display:none;">
 		<?php echo $form->labelEx($model,'date_created'); ?>
 		<?php echo $form->textField($model,'date_created'); ?>
 		<?php echo $form->error($model,'date_created'); ?>
@@ -38,5 +42,7 @@
 	</div>
 
 <?php $this->endWidget(); ?>
-
 </div><!-- form -->
+
+
+

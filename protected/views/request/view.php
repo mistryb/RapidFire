@@ -13,27 +13,35 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Request #<?php echo $model->id; ?></h1>
+<div class="viewinfo">
+    <div class="requestid">
+        <?php echo $model->id; ?>
+        <b style="font-size: 11px;">Request</b>
+    </div>
+    <div class="dateraised">            
+        <?php echo Yii::app()->dateFormatter->formatDateTime(CHtml::encode($model->date_raised), 'medium', false); ?>
+        <br />
+        <b style="font-size: 11px;"><?php echo CHtml::encode($model->getAttributeLabel('date_raised')); ?></b>
+    </div>
+    <div class="raisedby">
+        <?php echo CHtml::encode($model->raised_by); ?>
+        <br />
+        <b style="font-size: 11px;"><?php echo CHtml::encode($model->getAttributeLabel('raised_by')); ?></b>
+    </div>
+    <div class="assignedto">
+        <?php echo CHtml::encode($model->assignedTo->username); ?>
+        <br />
+        <b style="font-size: 11px;"><?php echo CHtml::encode($model->getAttributeLabel('assigned_to')); ?></b>
+    </div>
+    <div class="requesttype">
+        <?php echo CHtml::encode($model->request_type); ?>
+        <br />
+        <b style="font-size: 11px;"><?php echo CHtml::encode($model->getAttributeLabel('request_type')); ?></b>
+    </div>
+</div>
+ <br/>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'raised_by',
-		'request_type',
-		array(
-                    'label'=>'Assigned To',
-                    'type'=>'raw',
-                    'value'=> CHtml::encode($model->assignedTo->username),
-                ),
-		'query',
-                array(
-                    'label'=>'Date Raised',
-                    'type'=>'raw',
-                    'value'=> Yii::app()->dateFormatter->formatDateTime(CHtml::encode($model->date_raised), 'medium', false)
-                ),
-	),
-)); ?>
+
 
 <div id="response">    
         <?php if ($model->response): ?>
@@ -45,7 +53,7 @@ $this->menu=array(
         )); ?>
     <?php else: ?>
     
-    <h3>Create Your Response</h3>
+    <h3 style="text-align:center;">You have not responded to this request yet.</h3>
  
     <?php if(Yii::app()->user->hasFlash('responseSubmitted')): ?>
         <div class="flash-success">

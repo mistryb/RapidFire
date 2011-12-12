@@ -154,7 +154,7 @@ div.raisedby
         display: inline-block;              
         font-size: 20px;
         background-color: #E6EFC2;
-        width:350px;
+        width:300px;
         padding: 15px;     
 }
 div.dateraised
@@ -163,6 +163,15 @@ div.dateraised
         display: inline-block;              
         font-size: 20px;
         background-color: #FFF6BF;
+        width:125px;
+        padding: 15px;
+}
+div.assignedto
+{
+        text-align: center;
+        display: inline-block;              
+        font-size: 20px;
+        background-color: #ECFBD4;
         width:125px;
         padding: 15px;
 }
@@ -183,6 +192,11 @@ div.commentcount
         background-color: wheat ;
         width:70px;
         padding: 15px;
+}
+div.viewinfo
+{
+        width:910px;
+        margin:auto;
 }
 
 div.breadcrumbs
@@ -282,4 +296,9 @@ div.loginform
 {
     width: 200px;
     margin: auto;
+}
+
+div.requestcontent
+{
+    
 }
