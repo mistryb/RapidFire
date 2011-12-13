@@ -39,10 +39,14 @@ $this->menu=array(
         <b style="font-size: 11px;"><?php echo CHtml::encode($model->getAttributeLabel('request_type')); ?></b>
     </div>
 </div>
- <br/>
- 
+<br/>
 
-
+<div class="request">
+    <div class="requestcontent">
+        <?php echo CHtml::decode($model->query);?>
+    </div>
+</div>    
+<br/>
 
 <div id="response">    
         <?php if ($model->response): ?>

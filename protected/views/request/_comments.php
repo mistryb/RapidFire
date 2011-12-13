@@ -1,17 +1,11 @@
 <?php foreach($comments as $comment): ?>
 <div class="comment" id="c<?php echo $comment->id; ?>">
-
-        <?php echo CHtml::encode("#{$comment->id}"); ?>
-
-        <div class="author">
-                <?php echo $comment->author0->username; ?> says:
+        
+        <div class="commenttop">
+                <b><?php echo $comment->author0->username; ?> on <?php echo Yii::app()->dateFormatter->formatDateTime($comment->create_time, 'long', false); ?></b>
         </div>
-
-        <div class="time">
-                <?php echo $comment->create_time; ?>
-        </div>
-
-        <div class="content">
+      
+        <div class="commentcontent">
                 <?php echo nl2br(CHtml::encode($comment->content)); ?>
         </div>
 

@@ -304,10 +304,46 @@ div.responsecontent
     width:750px;
     overflow: scroll;
     border:1px solid #C9E0ED;
+    margin: auto;
+}
+
+div.requestcontent
+{
+    height:auto;
+    width:750px;
+    overflow: scroll;
+    border:1px solid #C9E0ED;
+    max-height: 300px;
+}
+
+div.request
+{
+    width: 750px;
+    margin:auto; 
 }
 
 div.response
 {
     width: 800px;
     margin:auto;
+}
+
+div.comment
+{
+    width:400px;
+    padding: 5px;
+    border: 1px solid #B7D6E7;
+    border-radius:3px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+div.commenttop
+{
+    padding: 5px;
+    width:390px;
+    background: #E6EFC2;
+}
+div.commentcontent
+{
+    padding: 10px;
 }
