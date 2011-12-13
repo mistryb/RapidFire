@@ -10,4 +10,3 @@
 
 </div><!-- response -->
 
-<?php echo Yii::app()->dateFormatter->formatDateTime($response->date_created, 'long', false); ?>

@@ -1730,3 +1730,59 @@ REQUEST_URI=/rapidfire/index.php?r=request/view&id=1
 in C:\LOCALHOST\wamp\www\rapidfire\protected\views\request\_comments.php (5)
 in C:\LOCALHOST\wamp\www\rapidfire\protected\views\request\view.php (84)
 in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (60)
+2011/12/13 17:58:59 [warning] [application] Failed to set unsafe attribute "request_id" of "Response".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (72)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (55)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 17:58:59 [warning] [application] Failed to set unsafe attribute "author" of "Response".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (72)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (55)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 17:58:59 [warning] [application] Failed to set unsafe attribute "date_created" of "Response".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (72)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (55)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:05:17 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:05:37 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:05:47 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:05:54 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:06:01 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:06:08 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:06:21 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:45:05 [warning] [application] Failed to set unsafe attribute "request_id" of "Comment".
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (93)
+in C:\LOCALHOST\wamp\www\rapidfire\protected\controllers\RequestController.php (54)
+in C:\LOCALHOST\wamp\www\rapidfire\index.php (13)
+2011/12/13 18:45:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "rbam".' in C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php:281
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('rbam')
+#1 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/rapidfire/index.php?r=rbam
+2011/12/13 18:48:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "rbam".' in C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php:281
+Stack trace:
+#0 C:\LOCALHOST\wamp\www\yii\framework\web\CWebApplication.php(136): CWebApplication->runController('rbam')
+#1 C:\LOCALHOST\wamp\www\yii\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 C:\LOCALHOST\wamp\www\rapidfire\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/rapidfire/index.php?r=rbam

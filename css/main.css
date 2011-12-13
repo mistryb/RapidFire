@@ -154,7 +154,7 @@ div.raisedby
         display: inline-block;              
         font-size: 20px;
         background-color: #E6EFC2;
-        width:300px;
+        width:280px;
         padding: 15px;     
 }
 div.dateraised
@@ -191,6 +191,15 @@ div.commentcount
         font-size: 20px;
         background-color: wheat ;
         width:70px;
+        padding: 15px;
+}
+div.responded
+{
+    text-align: center;
+        display: inline-block;              
+        font-size: 20px;
+        background-color: #E6EFC2;
+        width:50px;
         padding: 15px;
 }
 div.viewinfo
@@ -315,17 +324,27 @@ div.requestcontent
     border:1px solid #C9E0ED;
     max-height: 300px;
 }
+div.requesttop
+{
+    padding: 5px;
+    width:390px;
+    background: #E6EFC2;
+}
 
 div.request
 {
     width: 750px;
-    margin:auto; 
+    margin:auto;
+    border: 1px solid #B7D6E7;
+    border-radius:3px;
 }
 
 div.response
 {
     width: 800px;
     margin:auto;
+    border: 1px solid #B7D6E7;
+    border-radius:3px;
 }
 
 div.comment

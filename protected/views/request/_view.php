@@ -29,5 +29,14 @@
         <br />
         <b style="font-size: 11px;">Comments</b>
     </div>
+    
+    <div class="responded">
+        <?php if($data->response): ?>
+        <b>Y</b>
+        <?php else: ?>
+        <b>N</b>
+        <?php endif;?>
+        <b style="font-size: 11px;">Response</b>
+    </div>
 
 </div>
