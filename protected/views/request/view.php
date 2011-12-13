@@ -40,12 +40,13 @@ $this->menu=array(
     </div>
 </div>
  <br/>
+ 
 
 
 
 <div id="response">    
         <?php if ($model->response): ?>
-    <h3> Response </h3>
+    <h2 style="text-align:center;">A Response has Been Generated for this Request</h2>
     
         <?php $this->renderPartial('_response',array(
             'post'=>$model,

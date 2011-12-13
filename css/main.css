@@ -298,7 +298,16 @@ div.loginform
     margin: auto;
 }
 
-div.requestcontent
+div.responsecontent
 {
-    
+    height:300px;
+    width:750px;
+    overflow: scroll;
+    border:1px solid #C9E0ED;
+}
+
+div.response
+{
+    width: 800px;
+    margin:auto;
 }
