@@ -307,6 +307,15 @@ div.loginform
     margin: auto;
 }
 
+div.responsetop
+{
+    padding: 5px;
+    width:790px;
+    background: #BCE774;
+    text-align: center;
+    margin:auto;
+    font-size: 20px;
+}
 div.responsecontent
 {
     height:300px;
@@ -327,8 +336,11 @@ div.requestcontent
 div.requesttop
 {
     padding: 5px;
-    width:390px;
-    background: #E6EFC2;
+    width:740px;
+    background: #76C376;
+    text-align: center;
+    margin:auto;
+    font-size: 20px;
 }
 
 div.request

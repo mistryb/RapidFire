@@ -42,13 +42,20 @@ $this->menu=array(
 <br/>
 
 <div class="request">
+    <div class="requesttop">
+        <b>Request Information</b>
+    </div>
     <div class="requestcontent">
         <?php echo CHtml::decode($model->query);?>
     </div>
 </div>    
 <br/>
 
-<div id="response">    
+<div class="response">
+    <div class="responsetop">
+        <b>Response Information</b>
+    </div>
+    <br/>
         <?php if ($model->response): ?>
     <h2 style="text-align:center;">A Response has Been Generated for this Request</h2>
     

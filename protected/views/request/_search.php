@@ -35,11 +35,6 @@
 		<?php echo $form->textField($model,'date_raised'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'date_responded'); ?>
-		<?php echo $form->textField($model,'date_responded'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

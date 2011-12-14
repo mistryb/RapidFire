@@ -31,7 +31,7 @@ class RequestController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','myrequests'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -178,6 +178,24 @@ class RequestController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
+        
+        /**
+         * Lists all Requests that Belong the user that is logged in
+         */
+        public function actionMyrequests()
+        {
+                $dataProvider= new CActiveDataProvider('Request', array(
+                    'criteria'=>array(
+                        'condition'=>'assigned_to='.Yii::app()->user->id,
+                    ),
+                    'pagination'=>array(
+                        'pagesize'=>15,
+                    ),
+                ));
+                $this->render('myrequests', array(
+                   'dataProvider'=>$dataProvider, 
+                ));
+        }
 
 	/**
 	 * Manages all models.

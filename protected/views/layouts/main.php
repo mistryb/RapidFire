@@ -29,7 +29,9 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index'), 'visible'=> !Yii::app()->user->isGuest),
-                                array('label'=>'Requests', 'url'=>array('/request'), 'visible'=> !Yii::app()->user->isGuest),				
+                                array('label'=>'My Requests', 'url'=>array('/request/myrequests'), 'visible'=> !Yii::app()->user->isGuest),
+                                array('label'=>'New Request', 'url'=>array('/request/create'), 'visible'=> !Yii::app()->user->isGuest),
+                                array('label'=>'Manage Permissions', 'url'=>array('/rbam'), 'visible'=> !Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
