@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create Request','url'=>array('create')),
-	array('label'=>'Manage Request','url'=>array('admin')),
+	array('label'=>'My Requests', 'url'=>'#'),                
 );
 ?>
 

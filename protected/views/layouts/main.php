@@ -52,11 +52,15 @@
         array(
             'class'=>'bootstrap.widgets.BootMenu',
             'items'=>array(
-                array('label'=>'Dashboard', 'url'=>array('index'), 'active'=>true),
-                array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
-                array('label'=>'New Request', 'url'=>array('/request/create'), 'items'=>array(
+                array('label'=>'Dashboard', 'url'=>array('/site/index'), 'active'=>true),
+                array('label'=>'Requests', 'url'=>'#', 'items'=>array(
+                    array('label'=>'All requests', 'url'=>array('/request/index')),
+                    array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
+                    '---',
+                    array('label'=>'NEW REQUEST'),
                     array('label'=>'Commercially Confidential', 'url'=>'#'),
-                    array('label'=>'Open', 'url'=>'#'),                    
+                    array('label'=>'Public Enquiry', 'url'=>'#'), 
+                    array('label'=>'Information Request', 'url'=>'#')
                 )),
             ),
         ),       
