@@ -1,42 +1,24 @@
 <div class="view">
 
-    <div class="requestid">	
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('rfi_id')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->rfi_id),array('view','id'=>$data->rfi_id)); ?>
 	<br />
-        <b style="font-size: 11px;">Request</b>
-    </div>
-        
-    <div class="dateraised">            
-            <?php echo Yii::app()->dateFormatter->formatDateTime(CHtml::encode($data->date_raised), 'medium', false); ?>
-            <br />
-            <b style="font-size: 11px;"><?php echo CHtml::encode($data->getAttributeLabel('date_raised')); ?></b>
-    </div> 
-    
-    <div class="raisedby">
-        <?php echo CHtml::encode($data->raised_by); ?>
-        <br />
-        <b style="font-size: 11px;"><?php echo CHtml::encode($data->getAttributeLabel('raised_by')); ?></b>
-    </div>
-    
-    <div class="requesttype">
-        <?php echo CHtml::encode($data->request_type); ?>
-        <br />
-        <b style="font-size: 11px;"><?php echo CHtml::encode($data->getAttributeLabel('request_type')); ?></b>
-    </div>
-    
-    <div class="commentcount">
-        <?php echo CHtml::encode($data->commentCount); ?>
-        <br />
-        <b style="font-size: 11px;">Comments</b>
-    </div>
-    
-    <div class="responded">
-        <?php if($data->response): ?>
-        <b>Y</b>
-        <?php else: ?>
-        <b>N</b>
-        <?php endif;?>
-        <b style="font-size: 11px;">Response</b>
-    </div>
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
+	<?php echo CHtml::encode($data->title); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('originator')); ?>:</b>
+	<?php echo CHtml::encode($data->originator); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('body')); ?>:</b>
+	<?php echo CHtml::encode($data->body); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('date_created')); ?>:</b>
+	<?php echo CHtml::encode($data->date_created); ?>
+	<br />
+
 
 </div>

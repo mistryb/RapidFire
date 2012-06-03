@@ -4,20 +4,18 @@
  * This is the model class for table "tbl_request".
  *
  * The followings are the available columns in table 'tbl_request':
+ * @property string $rfi_id
+ * @property string $title
+ * @property string $originator
+ * @property string $body
+ * @property string $date_created
  * @property integer $id
- * @property string $raised_by
- * @property string $request_type
- * @property integer $assigned_to
- * @property string $query
- * @property string $date_raised
- *
- * The followings are the available model relations:
- * @property User $assignedTo
  */
 class Request extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
+	 * @param string $className active record class name.
 	 * @return Request the static model class
 	 */
 	public static function model($className=__CLASS__)
@@ -41,13 +39,12 @@ class Request extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, raised_by, request_type, assigned_to, query, date_raised', 'required'),
-			array('id', 'unique'),
-                        array('id, assigned_to', 'numerical', 'integerOnly'=>true),
-			array('raised_by, request_type', 'length', 'max'=>256),
+			array('rfi_id, title, originator, body, date_created', 'required'),
+			array('rfi_id, title, originator', 'length', 'max'=>256),
+			array('body', 'length', 'max'=>1500),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, raised_by, request_type, assigned_to, query, date_raised', 'safe', 'on'=>'search'),
+			array('rfi_id, title, originator, body, date_created, id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,15 +56,6 @@ class Request extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'assignedTo' => array(self::BELONGS_TO, 'User', 'assigned_to'),
-                        'comments' => array(self::HAS_MANY, 'Comment', 'request_id',
-                            'condition'=>'comments.status='.Comment::STATUS_APPROVED,
-                            'order'=>'comments.create_time DESC'),
-                        'commentCount' => array(self::STAT, 'Comment', 'request_id',
-                            'condition'=>'status='.Comment::STATUS_APPROVED),
-                        'response' => array(self::HAS_ONE, 'Response', 'request_id',
-                            'condition'=>'response.status='.Response::STATUS_APPROVED,
-                            'order'=>'response.date_created DESC'),
 		);
 	}
 
@@ -77,12 +65,12 @@ class Request extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'rfi_id' => 'RFI No.',
+			'title' => 'Title',
+			'originator' => 'Originator',
+			'body' => 'Body',
+			'date_created' => 'Date Created',
 			'id' => 'ID',
-			'raised_by' => 'Raised By',
-			'request_type' => 'Request Type',
-			'assigned_to' => 'Assigned To',
-			'query' => 'Query',
-			'date_raised' => 'Date Raised',
 		);
 	}
 
@@ -97,33 +85,15 @@ class Request extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('rfi_id',$this->rfi_id,true);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('originator',$this->originator,true);
+		$criteria->compare('body',$this->body,true);
+		$criteria->compare('date_created',$this->date_created,true);
 		$criteria->compare('id',$this->id);
-		$criteria->compare('raised_by',$this->raised_by,true);
-		$criteria->compare('request_type',$this->request_type,true);
-		$criteria->compare('assigned_to',$this->assigned_to);
-		$criteria->compare('query',$this->query,true);
-		$criteria->compare('date_raised',$this->date_raised,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-        public function addComment($comment)
-        {
-            if(Yii::app()->params['commentNeedApproval'])
-                $comment->status=Comment::STATUS_PENDING;
-            else
-                $comment->status=Comment::STATUS_APPROVED;
-            $comment->request_id=$this->id;
-            return $comment->save();
-        }
-        public function addResponse($response)
-        {
-            if(Yii::app()->params['responseNeedApproval'])
-                $response->status=Response::STATUS_PENDING;
-            else
-                $response->status=Response::STATUS_APPROVED;
-            $response->request_id=$this->id;
-            return $response->save();
-        }
 }

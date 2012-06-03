@@ -15,19 +15,44 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                ['Quarter', 'Team 1', 'Team 2', 'Team 3'],
+                ['Q1 2011',  14,      12,   25],
+                ['Q2 2011',  28,      33,   55],
+                ['Q3 2011',  44,      55,   75],
+                ['Q4 2011',  47,      59,   87],
+                ['Q1 2011',  58,      66,   95],
+                ['Q2 2011',  77,      69,   105],
+                ['Q3 2011',  85,      75,   186]
+                ]);
+
+                var options = {
+                title: 'RFI Performance'
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+        </script>
 </head>
 
 <body>                 
         <?php $this->widget('bootstrap.widgets.BootNavbar', array(
     'fixed'=>false,
-    'brand'=>'Project name',
-    'brandUrl'=>'#',
+    'brand'=>'RapidRFI',
+    'brandUrl'=>'http://www.computingforengineering.com',
     'collapse'=>true, // requires bootstrap-responsive.css
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.BootMenu',
             'items'=>array(
-                array('label'=>'Dashboard', 'url'=>array('/request/index'), 'active'=>true),
+                array('label'=>'Dashboard', 'url'=>array('index'), 'active'=>true),
                 array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
                 array('label'=>'New Request', 'url'=>array('/request/create'), 'items'=>array(
                     array('label'=>'Commercially Confidential', 'url'=>'#'),

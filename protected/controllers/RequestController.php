@@ -6,7 +6,7 @@ class RequestController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column1';
+	public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -31,7 +31,7 @@ class RequestController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','myrequests'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -50,56 +50,10 @@ class RequestController extends Controller
 	 */
 	public function actionView($id)
 	{
-                $request= $this->loadModel($id);
-                $comment=$this->newComment($request);
-                $response=$this->newResponse($request);
 		$this->render('view',array(
-			'model'=>$request,
-                        'comment'=>$comment,
-                        'response'=>$response
+			'model'=>$this->loadModel($id),
 		));
 	}
-        protected function newResponse($request)
-        {
-            $response=new Response;
-             if(isset($_POST['ajax']) && $_POST['ajax']==='response-form')
-            {
-                echo CActiveForm::validate($response);
-                Yii::app()->end();
-            }
-            if(isset($_POST['Response']))
-            {
-                $response->attributes=$_POST['Response'];
-                if($request->addResponse($response))
-                {
-                    if($response->status==Comment::STATUS_PENDING)
-                        Yii::app()->user->setFlash('commentSubmitted','Thank you...');
-                    $this->refresh();
-                }
-            }
-            return $response;
-        }   
-        
-        protected function newComment($request)
-        {
-            $comment=new Comment;
-             if(isset($_POST['ajax']) && $_POST['ajax']==='comment-form')
-            {
-                echo CActiveForm::validate($comment);
-                Yii::app()->end();
-            }
-            if(isset($_POST['Comment']))
-            {
-                $comment->attributes=$_POST['Comment'];
-                if($request->addComment($comment))
-                {
-                    if($comment->status==Comment::STATUS_PENDING)
-                        Yii::app()->user->setFlash('commentSubmitted','Thank you...');
-                    $this->refresh();
-                }
-            }
-            return $comment;
-        }   
 
 	/**
 	 * Creates a new model.
@@ -116,7 +70,7 @@ class RequestController extends Controller
 		{
 			$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->rfi_id));
 		}
 
 		$this->render('create',array(
@@ -140,7 +94,7 @@ class RequestController extends Controller
 		{
 			$model->attributes=$_POST['Request'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->rfi_id));
 		}
 
 		$this->render('update',array(
@@ -178,24 +132,6 @@ class RequestController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
-        
-        /**
-         * Lists all Requests that Belong the user that is logged in
-         */
-        public function actionMyrequests()
-        {
-                $dataProvider= new CActiveDataProvider('Request', array(
-                    'criteria'=>array(
-                        'condition'=>'assigned_to='.Yii::app()->user->id,
-                    ),
-                    'pagination'=>array(
-                        'pagesize'=>15,
-                    ),
-                ));
-                $this->render('myrequests', array(
-                   'dataProvider'=>$dataProvider, 
-                ));
-        }
 
 	/**
 	 * Manages all models.

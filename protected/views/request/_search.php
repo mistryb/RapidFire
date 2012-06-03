@@ -1,44 +1,23 @@
-<div class="wide form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.BootActiveForm',array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'rfi_id',array('class'=>'span5','maxlength'=>256)); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'raised_by'); ?>
-		<?php echo $form->textField($model,'raised_by',array('size'=>60,'maxlength'=>256)); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'title',array('class'=>'span5','maxlength'=>256)); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'request_type'); ?>
-		<?php echo $form->textField($model,'request_type',array('size'=>60,'maxlength'=>256)); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'originator',array('class'=>'span5','maxlength'=>256)); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'assigned_to'); ?>
-		<?php echo $form->textField($model,'assigned_to'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'body',array('class'=>'span5','maxlength'=>1500)); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'query'); ?>
-		<?php echo $form->textArea($model,'query',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'date_created',array('class'=>'span5')); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'date_raised'); ?>
-		<?php echo $form->textField($model,'date_raised'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+	<div class="form-actions">
+		<?php $this->widget('bootstrap.widgets.BootButton', array(
+			'type'=>'primary',
+			'label'=>'Search',
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->
