@@ -11,6 +11,9 @@ return array(
 
 	// preloading 'log' component
 	'preload'=>array('log'),
+    
+        // preloading the twitter bootstrap component
+        'bootstrap',
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -24,8 +27,13 @@ return array(
 			'password'=>'cheese',
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+                        'generatorPaths'=>array(
+                            'bootstrap.gii', //since 0.9.1
+                        ),
 		),
-                'rbam'
+                // RBAM tool 
+                'rbam', 
+                
 	),
 
 	// application components
@@ -58,8 +66,8 @@ return array(
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
-            'errorAction'=>'site/error',
-        ),
+                        'errorAction'=>'site/error',
+                ),
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
@@ -75,6 +83,9 @@ return array(
 				*/
 			),
 		),
+                'bootstrap'=>array(
+                    'class'=>'ext.bootstrap.components.Bootstrap',
+                )
 	),
 
 	// application-level parameters that can be accessed
@@ -82,5 +93,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-	),
+	),           
 );
