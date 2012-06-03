@@ -10,10 +10,10 @@ return array(
 	'name'=>'Rapidfire',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
-    
-        // preloading the twitter bootstrap component
-        'bootstrap',
+	'preload'=>array(
+            'log',
+            'bootstrap',
+            ),
 
 	// autoloading model and component classes
 	'import'=>array(

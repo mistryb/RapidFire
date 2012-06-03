@@ -17,27 +17,41 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
-
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Dashboard', 'url'=>array('/site/index'), 'visible'=> !Yii::app()->user->isGuest),
-                                array('label'=>'My Requests', 'url'=>array('/request/myrequests'), 'visible'=> !Yii::app()->user->isGuest),
-                                array('label'=>'New Request', 'url'=>array('/request/create'), 'visible'=> !Yii::app()->user->isGuest),
-                                array('label'=>'Manage Permissions', 'url'=>array('/rbam'), 'visible'=> !Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
+<body>                 
+        <?php $this->widget('bootstrap.widgets.BootNavbar', array(
+    'fixed'=>false,
+    'brand'=>'Project name',
+    'brandUrl'=>'#',
+    'collapse'=>true, // requires bootstrap-responsive.css
+    'items'=>array(
+        array(
+            'class'=>'bootstrap.widgets.BootMenu',
+            'items'=>array(
+                array('label'=>'Dashboard', 'url'=>array('/site/index'), 'active'=>true),
+                array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
+                array('label'=>'New Request', 'url'=>array('/request/create'), 'items'=>array(
+                    array('label'=>'Commercially Confidential', 'url'=>'#'),
+                    array('label'=>'Open', 'url'=>'#'),                    
+                )),
+            ),
+        ),       
+        array(
+            'class'=>'bootstrap.widgets.BootMenu',
+            'htmlOptions'=>array('class'=>'pull-right'),
+            'items'=>array(              
+                array('label'=>'Bhavik Mistry', 'url'=>'#', 'items'=>array(
+                    array('label'=>'Settings', 'url'=>'#'),
+                    array('label'=>'Wiki', 'url'=>'#'),
+                    array('label'=>'Manage Permissions', 'url'=>array('/rbam')),
+                    '---',
+                    array('label'=>'Logout', 'url'=>array('/site/logout')),
+                )),
+            ),
+        ),
+    ),
+)); ?>	
 	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+		<?php $this->widget('bootstrap.widgets.BootBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
