@@ -2871,3 +2871,28 @@ REQUEST_URI=/rapidfire/index.php?r=request/myrequests
 in C:\xampp\htdocs\RapidFire\protected\views\request\myrequests.php (25)
 in C:\xampp\htdocs\RapidFire\protected\controllers\RequestController.php (197)
 in C:\xampp\htdocs\RapidFire\index.php (13)
+2012/06/03 17:57:48 [error] [exception.CException] exception 'CException' with message 'Property "CActiveDataProvider.assigned_to" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\RapidFire\protected\views\request\index.php(22): CComponent->__get('assigned_to')
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(127): require('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#5 C:\xampp\htdocs\RapidFire\protected\controllers\RequestController.php(179): CController->render('index', Array)
+#6 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(50): RequestController->actionIndex()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('index')
+#16 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('request/index')
+#17 C:\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\RapidFire\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/rapidfire/index.php?r=request/index
+HTTP_REFERER=http://localhost/rapidfire/index.php?r=request/myrequests
+---

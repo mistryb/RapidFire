@@ -27,7 +27,7 @@
         array(
             'class'=>'bootstrap.widgets.BootMenu',
             'items'=>array(
-                array('label'=>'Dashboard', 'url'=>array('/site/index'), 'active'=>true),
+                array('label'=>'Dashboard', 'url'=>array('/request/index'), 'active'=>true),
                 array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
                 array('label'=>'New Request', 'url'=>array('/request/create'), 'items'=>array(
                     array('label'=>'Commercially Confidential', 'url'=>'#'),
