@@ -50,7 +50,7 @@ return array(
 		),
 		// MySQL database enabled
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=rapidfire',
+			'connectionString' => 'mysql:host=localhost;dbname=rapidrfi',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'cheese',
