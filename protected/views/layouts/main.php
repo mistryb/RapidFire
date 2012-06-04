@@ -55,7 +55,7 @@
                 array('label'=>'Dashboard', 'url'=>array('/site/index'), 'active'=>true),
                 array('label'=>'Requests', 'url'=>'#', 'items'=>array(
                     array('label'=>'All requests', 'url'=>array('/request/index')),
-                    array('label'=>'My Requests', 'url'=>array('/request/myrequests')),
+                    array('label'=>'My Requests', 'url'=>array('/userRequest/index')),
                     '---',
                     array('label'=>'NEW REQUEST'),
                     array('label'=>'Commercially Confidential', 'url'=>'#'),
@@ -68,7 +68,7 @@
             'class'=>'bootstrap.widgets.BootMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(              
-                array('label'=>'Bhavik Mistry', 'url'=>'#', 'items'=>array(
+                array('label'=>Yii::app()->user->name, 'url'=>'#', 'items'=>array(
                     array('label'=>'Settings', 'url'=>'#'),
                     array('label'=>'Wiki', 'url'=>'#'),
                     array('label'=>'Manage Permissions', 'url'=>array('/rbam')),

@@ -27,7 +27,7 @@ class RequestController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','assigned'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -127,11 +127,15 @@ class RequestController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Request');
+		$dataProvider=new CActiveDataProvider('UserRequest', array(
+                    'criteria'=>array(
+                        'with'=>array('requestId', 'userId'),
+                    )
+                ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}     
 
 	/**
 	 * Manages all models.

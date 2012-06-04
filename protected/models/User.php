@@ -66,10 +66,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'rfis' => array(self::HAS_MANY, 'Rfi', 'assigned_to'),
-			'rfis1' => array(self::HAS_MANY, 'Rfi', 'created_by'),
-			'rfis2' => array(self::HAS_MANY, 'Rfi', 'updated_by'),
-                        'uploads' => array(self::HAS_MANY, 'Upload', 'uploaded_by' ),
+                    'tblRequests' => array(self::MANY_MANY, 'Request', 'tbl_user_request(user_id, request_id)'),
                     );
 	}
 

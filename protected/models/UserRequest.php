@@ -1,22 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "tbl_request".
+ * This is the model class for table "tbl_user_request".
  *
- * The followings are the available columns in table 'tbl_request':
- * @property string $rfi_id
- * @property string $title
- * @property string $originator
- * @property string $body
- * @property string $date_created
- * @property integer $id
+ * The followings are the available columns in table 'tbl_user_request':
+ * @property integer $user_id
+ * @property string $request_id
  */
-class Request extends CActiveRecord
+class UserRequest extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Request the static model class
+	 * @return UserRequest the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -28,7 +24,7 @@ class Request extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_request';
+		return 'tbl_user_request';
 	}
 
 	/**
@@ -39,12 +35,12 @@ class Request extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rfi_id, title, originator, body', 'required'),
-			array('rfi_id, title, originator', 'length', 'max'=>256),
-			array('body', 'length', 'max'=>1500),
+			array('user_id, request_id', 'required'),
+			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('request_id', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('rfi_id, title, originator, body, date_created, id', 'safe', 'on'=>'search'),
+			array('user_id, request_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +52,8 @@ class Request extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-                    'userRequest' => array(self::MANY_MANY, 'UserRequest', 'tbl_user_request(request_id, user_id)'),
-                    'users' => array(self::HAS_MANY, 'User', array('user_id'=>'id'), 'through'=>'userRequest'),                    
+                    'userId'=>array(self::BELONGS_TO, 'User', 'user_id'),
+                    'requestId'=>array(self::BELONGS_TO, 'Request', 'request_id'),
 		);
 	}
 
@@ -67,12 +63,8 @@ class Request extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rfi_id' => 'RFI No.',
-			'title' => 'Title',
-			'originator' => 'Originator',
-			'body' => 'Body',
-			'date_created' => 'Date Created',
-			'id' => 'ID',
+			'user_id' => 'User',
+			'request_id' => 'Request',
 		);
 	}
 
@@ -87,12 +79,8 @@ class Request extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('rfi_id',$this->rfi_id,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('originator',$this->originator,true);
-		$criteria->compare('body',$this->body,true);
-		$criteria->compare('date_created',$this->date_created,true);
-		$criteria->compare('id',$this->id);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('request_id',$this->request_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -1,15 +1,16 @@
 <?php
 $this->breadcrumbs=array(
-	'Requests',
-);
+	'My Requests',
+);?>
+<?php
 
 $this->menu=array(
 	array('label'=>'Create Request','url'=>array('create')),
-	array('label'=>'My Requests', 'url'=>array('/userRequest/index')),                
+	array('label'=>'All Requests', 'url'=>array('/request/index')),                
 );
 ?>
 
-<h1>Requests</h1>
+<h1>My Requests</h1>
 
 <?php $this->widget('bootstrap.widgets.BootListView',array(
 	'dataProvider'=>$dataProvider,
